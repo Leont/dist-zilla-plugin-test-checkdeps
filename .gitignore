@@ -4,4 +4,4 @@
 *.swo
 *.tdy
 *.tar.gz
-Dist-Zilla-Plugin-Test-AssureDeps-*
+Dist-Zilla-Plugin-Test-CheckDeps-*

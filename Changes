@@ -1,6 +1,7 @@
-Revision history for Dist-Zilla-Plugin-Test-AssureDeps
+Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          Renamed to Dist::Zilla::Plugin::Test::CheckDeps
 
 0.001     2011-10-14 20:55:11 Europe/Amsterdam
-    -
+          Initial release

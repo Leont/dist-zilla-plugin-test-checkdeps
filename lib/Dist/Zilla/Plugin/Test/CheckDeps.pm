@@ -1,4 +1,4 @@
-package Dist::Zilla::Plugin::Test::AssureDeps;
+package Dist::Zilla::Plugin::Test::CheckDeps;
 
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
