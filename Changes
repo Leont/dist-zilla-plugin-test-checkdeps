@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.002     2011-10-17 22:56:07 Europe/Amsterdam
           Renamed to Dist::Zilla::Plugin::Test::CheckDeps
 
 0.001     2011-10-14 20:55:11 Europe/Amsterdam
