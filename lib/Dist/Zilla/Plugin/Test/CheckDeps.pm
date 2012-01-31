@@ -11,13 +11,13 @@ has fatal => (
 );
 
 around add_file => sub {
-    my ($orig, $self, $file) = @_;
-    return $self->$orig(
-        Dist::Zilla::File::InMemory->new(
-            name    => $file->name,
-            content => $self->fill_in_string($file->content, { fatal => $self->fatal })
-        ),
-    );
+	my ($orig, $self, $file) = @_;
+	return $self->$orig(
+		Dist::Zilla::File::InMemory->new(
+			name    => $file->name,
+			content => $self->fill_in_string($file->content, { fatal => $self->fatal })
+		)
+	);
 };
 
 __PACKAGE__->meta->make_immutable;
