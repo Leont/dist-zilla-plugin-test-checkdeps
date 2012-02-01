@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          Rename test to t/00-check-deps.t
 
 0.002     2011-10-17 22:56:07 Europe/Amsterdam
           Renamed to Dist::Zilla::Plugin::Test::CheckDeps

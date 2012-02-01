@@ -26,7 +26,7 @@ no Moose;
 1;
 
 __DATA__
-___[ t/00-assure-deps.t ]___
+___[ t/00-check-deps.t ]___
 use Test::More 0.88;
 use Test::CheckDeps;
 
@@ -44,7 +44,7 @@ __END__
 
 =head1 SYNOPSIS
 
- [Test::AssureDeps]
+ [Test::CheckDeps]
  fatal = 0 ; default
 
 =head1 DESCRIPTION
