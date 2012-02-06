@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.003     2012-02-06 23:39:53 Europe/Amsterdam
           Rename test to t/00-check-deps.t
           Add runtime dependency on Test::CheckDeps and Test::More
 
