@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          Inject a test-phase requirement on Test::CheckDeps and Test::More into the distribution being built.
 
 0.003     2012-02-06 23:39:53 Europe/Amsterdam
           Rename test to t/00-check-deps.t
