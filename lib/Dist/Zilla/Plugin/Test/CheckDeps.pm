@@ -31,6 +31,7 @@ sub register_prereqs
             phase => 'test',
         },
         'Test::CheckDeps' => '0',
+        'Test::More' => '0.88',
     );
 }
 
