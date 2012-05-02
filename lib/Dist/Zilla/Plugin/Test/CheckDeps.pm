@@ -2,7 +2,8 @@ package Dist::Zilla::Plugin::Test::CheckDeps;
 
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
-with qw/Dist::Zilla::Role::TextTemplate/;
+with qw/Dist::Zilla::Role::TextTemplate
+    Dist::Zilla::Role::PrereqSource/;
 
 has fatal => (
 	is => 'ro',
@@ -19,6 +20,20 @@ around add_file => sub {
 		)
 	);
 };
+
+sub register_prereqs
+{
+    my ($self) = @_;
+
+    $self->zilla->register_prereqs(
+        {
+            type  => 'requires',
+            phase => 'test',
+        },
+        'Test::CheckDeps' => '0',
+        'Test::More' => '0.88',
+    );
+}
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
