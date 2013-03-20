@@ -30,6 +30,23 @@ no Moose;
 
 1;
 
+#ABSTRACT: Check for presence of dependencies
+
+=head1 SYNOPSIS
+
+ [Test::CheckDeps]
+ fatal = 0 ; default
+
+=head1 DESCRIPTION
+
+This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
+
+=for Pod::Coverage
+register_prereqs
+=end
+
+=cut
+
 __DATA__
 ___[ t/00-check-deps.t ]___
 use Test::More 0.94;
@@ -42,23 +59,4 @@ if ({{ $fatal }}) {
 }
 
 done_testing;
-
-__END__
-
-#ABSTRACT: Check for presence of dependencies
-
-=head1 SYNOPSIS
-
- [Test::CheckDeps]
- fatal = 0 ; default
-
-=head1 DESCRIPTION
-
-This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
-
-__END__
-
-=for Pod::Coverage
-register_prereqs
-=end
 
