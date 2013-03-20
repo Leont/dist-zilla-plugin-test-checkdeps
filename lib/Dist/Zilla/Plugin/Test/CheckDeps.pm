@@ -50,7 +50,7 @@ register_prereqs
 __DATA__
 ___[ t/00-check-deps.t ]___
 use Test::More 0.94;
-use Test::CheckDeps;
+use Test::CheckDeps 0.002;
 
 check_dependencies();
 
