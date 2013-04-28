@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          require version of Test::More that added is_passing()
+          (RT#84905, Karen Etheridge)
 
 0.005     2012-05-02 23:40:44 Europe/Amsterdam
           Increase runtime dependency on Test::CheckDeps to 0.002
