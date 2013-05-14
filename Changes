@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          allow testing of additional phases/types as TODO tests
+          (Karen Etheridge)
 
 0.006     2013-04-28 08:39:02 America/Vancouver
           require version of Test::More that added is_passing()
