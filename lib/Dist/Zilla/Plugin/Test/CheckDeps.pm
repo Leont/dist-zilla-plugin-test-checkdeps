@@ -10,19 +10,35 @@ has fatal => (
 	default => 0,
 );
 
+has level => (
+        is => 'ro',
+        isa => 'Str',
+        lazy => 1,
+        default => '',
+);
+
+
 around add_file => sub {
 	my ($orig, $self, $file) = @_;
+
+        my $level = $self->level
+            ? ('\'' . $self->level . '\'')
+            : '';
 	return $self->$orig(
 		Dist::Zilla::File::InMemory->new(
 			name    => $file->name,
-			content => $self->fill_in_string($file->content, { fatal => $self->fatal })
+			content => $self->fill_in_string($file->content,
+                                         {
+                                                fatal => $self->fatal,
+                                                level => $level,
+                                         })
 		)
 	);
 };
 
 sub register_prereqs {
 	my $self = shift;
-	$self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.94, 'Test::CheckDeps' => 0.002);
+	$self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.94, 'Test::CheckDeps' => 0.004);
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -35,11 +51,17 @@ no Moose;
 =head1 SYNOPSIS
 
  [Test::CheckDeps]
- fatal = 0 ; default
+ fatal = 0          ; default
+ level = classic
 
 =head1 DESCRIPTION
 
 This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
+
+If C<fatal> is true, C<BAIL_OUT> is called if the tests fail.
+
+C<level> is passed to C<check_dependencies> in L<Test::CheckDeps>.
+(Defaults to no argument, i.e. classic.)
 
 =for Pod::Coverage
 register_prereqs
@@ -50,9 +72,9 @@ register_prereqs
 __DATA__
 ___[ t/00-check-deps.t ]___
 use Test::More 0.94;
-use Test::CheckDeps 0.002;
+use Test::CheckDeps 0.004;
 
-check_dependencies();
+check_dependencies({{ $level }});
 
 if ({{ $fatal }}) {
     BAIL_OUT("Missing dependencies") if !Test::More->builder->is_passing;
