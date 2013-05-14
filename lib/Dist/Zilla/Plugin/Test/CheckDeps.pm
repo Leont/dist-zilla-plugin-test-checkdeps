@@ -22,7 +22,7 @@ around add_file => sub {
 
 sub register_prereqs {
 	my $self = shift;
-	$self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.88, 'Test::CheckDeps' => 0.002);
+	$self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.94, 'Test::CheckDeps' => 0.002);
 }
 
 __PACKAGE__->meta->make_immutable;
