@@ -14,23 +14,20 @@ has level => (
         is => 'ro',
         isa => 'Str',
         lazy => 1,
-        default => '',
+        default => 'classic',
 );
 
 
 around add_file => sub {
 	my ($orig, $self, $file) = @_;
 
-        my $level = $self->level
-            ? ('\'' . $self->level . '\'')
-            : '';
 	return $self->$orig(
 		Dist::Zilla::File::InMemory->new(
 			name    => $file->name,
 			content => $self->fill_in_string($file->content,
                                          {
                                                 fatal => $self->fatal,
-                                                level => $level,
+                                                level => $self->level,
                                          })
 		)
 	);
@@ -61,7 +58,7 @@ This module adds a test that assures all dependencies have been installed proper
 If C<fatal> is true, C<BAIL_OUT> is called if the tests fail.
 
 C<level> is passed to C<check_dependencies> in L<Test::CheckDeps>.
-(Defaults to no argument, i.e. classic.)
+(Defaults to C<'classic'>.)
 
 =for Pod::Coverage
 register_prereqs
@@ -74,7 +71,7 @@ ___[ t/00-check-deps.t ]___
 use Test::More 0.94;
 use Test::CheckDeps 0.004;
 
-check_dependencies({{ $level }});
+check_dependencies('{{ $level }}');
 
 if ({{ $fatal }}) {
     BAIL_OUT("Missing dependencies") if !Test::More->builder->is_passing;
