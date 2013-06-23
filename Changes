@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.007     2013-06-23 21:56:19 Europe/Amsterdam
           allow testing of additional phases/types as TODO tests
           (Karen Etheridge)
           Require latest Test::CheckDeps
