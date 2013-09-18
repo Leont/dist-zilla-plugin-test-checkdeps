@@ -69,7 +69,7 @@ register_prereqs
 __DATA__
 ___[ t/00-check-deps.t ]___
 use Test::More 0.94;
-use Test::CheckDeps 0.004;
+use Test::CheckDeps 0.007;
 
 check_dependencies('{{ $level }}');
 
