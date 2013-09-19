@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.008     2013-09-19 01:56:35 +0000
           - bumped required version of Test::CheckDeps to latest
           - added header to test, indicating the version of the plugin that
             generated it
