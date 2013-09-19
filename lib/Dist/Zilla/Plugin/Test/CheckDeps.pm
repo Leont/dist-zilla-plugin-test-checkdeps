@@ -26,6 +26,8 @@ around add_file => sub {
 			name    => $file->name,
 			content => $self->fill_in_string($file->content,
                                          {
+                                                dist => \($self->zilla),
+                                                plugin => \$self,
                                                 fatal => $self->fatal,
                                                 level => $self->level,
                                          })
@@ -68,6 +70,11 @@ register_prereqs
 
 __DATA__
 ___[ t/00-check-deps.t ]___
+use strict;
+use warnings;
+
+# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
+
 use Test::More 0.94;
 use Test::CheckDeps 0.007;
 

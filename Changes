@@ -2,6 +2,8 @@ Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
           bumped required version of Test::CheckDeps to latest
+          added header to test, indicating the version of the plugin that
+          generated it
 
 0.007     2013-06-23 21:56:19 Europe/Amsterdam
           allow testing of additional phases/types as TODO tests
