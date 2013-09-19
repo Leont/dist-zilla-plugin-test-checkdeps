@@ -74,7 +74,7 @@ ___[ t/00-check-deps.t ]___
 use strict;
 use warnings;
 
-# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
+# this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
 
 use Test::More 0.94;
 use Test::CheckDeps 0.007;
