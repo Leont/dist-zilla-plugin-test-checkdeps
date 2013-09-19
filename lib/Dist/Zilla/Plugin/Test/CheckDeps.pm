@@ -1,43 +1,44 @@
 package Dist::Zilla::Plugin::Test::CheckDeps;
+# vim: set ts=4 sw=4 tw=78 et nolist :
 
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
 with qw/Dist::Zilla::Role::TextTemplate Dist::Zilla::Role::PrereqSource/;
 
 has fatal => (
-	is => 'ro',
-	isa => 'Bool',
-	default => 0,
+    is => 'ro',
+    isa => 'Bool',
+    default => 0,
 );
 
 has level => (
-        is => 'ro',
-        isa => 'Str',
-        lazy => 1,
-        default => 'classic',
+    is => 'ro',
+    isa => 'Str',
+    lazy => 1,
+    default => 'classic',
 );
 
 
 around add_file => sub {
-	my ($orig, $self, $file) = @_;
+    my ($orig, $self, $file) = @_;
 
-	return $self->$orig(
-		Dist::Zilla::File::InMemory->new(
-			name    => $file->name,
-			content => $self->fill_in_string($file->content,
-                                         {
-                                                dist => \($self->zilla),
-                                                plugin => \$self,
-                                                fatal => $self->fatal,
-                                                level => $self->level,
-                                         })
-		)
-	);
+    return $self->$orig(
+        Dist::Zilla::File::InMemory->new(
+            name    => $file->name,
+            content => $self->fill_in_string($file->content,
+            {
+                dist => \($self->zilla),
+                plugin => \$self,
+                fatal => $self->fatal,
+                level => $self->level,
+            })
+        )
+    );
 };
 
 sub register_prereqs {
-	my $self = shift;
-	$self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.94, 'Test::CheckDeps' => 0.006);
+    my $self = shift;
+    $self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => 0.94, 'Test::CheckDeps' => 0.006);
 }
 
 __PACKAGE__->meta->make_immutable;
