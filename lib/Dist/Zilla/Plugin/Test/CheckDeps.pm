@@ -4,6 +4,7 @@ package Dist::Zilla::Plugin::Test::CheckDeps;
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
 with qw/Dist::Zilla::Role::TextTemplate Dist::Zilla::Role::PrereqSource/;
+use namespace::autoclean;
 
 has fatal => (
     is => 'ro',
@@ -42,7 +43,6 @@ sub register_prereqs {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
