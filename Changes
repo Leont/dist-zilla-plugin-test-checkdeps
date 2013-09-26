@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          - new 'filename' option, for changing the location of the created
+            test
 
 0.008     2013-09-19 01:56:35 +0000
           - bumped required version of Test::CheckDeps to latest

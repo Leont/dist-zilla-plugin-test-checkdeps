@@ -19,13 +19,18 @@ has level => (
     default => 'classic',
 );
 
+has filename => (
+    is => 'ro',
+    isa => 'Str',
+    default => 't/00-check-deps.t',
+);
 
 around add_file => sub {
     my ($orig, $self, $file) = @_;
 
     return $self->$orig(
         Dist::Zilla::File::InMemory->new(
-            name    => $file->name,
+            name    => $self->filename,
             content => $self->fill_in_string($file->content,
             {
                 dist => \($self->zilla),
@@ -68,6 +73,9 @@ to false.
 =item * C<level>: passed to C<check_dependencies> in L<Test::CheckDeps>.
 (Defaults to C<classic>.)
 
+=item * C<filename>: the name of the generated file. Defaults to
+F<t/00-check-deps.t>.
+
 =back
 
 =for Pod::Coverage register_prereqs
@@ -75,7 +83,7 @@ to false.
 =cut
 
 __DATA__
-___[ t/00-check-deps.t ]___
+___[ test-checkdeps ]___
 use strict;
 use warnings;
 
