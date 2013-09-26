@@ -58,10 +58,17 @@ __PACKAGE__->meta->make_immutable;
 
 This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
 
-If C<fatal> is true, C<BAIL_OUT> is called if the tests fail.
+This plugin accepts the following options:
 
-C<level> is passed to C<check_dependencies> in L<Test::CheckDeps>.
-(Defaults to C<'classic'>.)
+=over 4
+
+=item * C<fatal>: if true, C<BAIL_OUT> is called if the tests fail. Defaults
+to false.
+
+=item * C<level>: passed to C<check_dependencies> in L<Test::CheckDeps>.
+(Defaults to C<classic>.)
+
+=back
 
 =for Pod::Coverage register_prereqs
 
