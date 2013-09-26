@@ -44,9 +44,9 @@ sub register_prereqs {
 
 __PACKAGE__->meta->make_immutable;
 
-1;
+# ABSTRACT: Check for presence of dependencies
 
-#ABSTRACT: Check for presence of dependencies
+=pod
 
 =head1 SYNOPSIS
 
@@ -63,9 +63,7 @@ If C<fatal> is true, C<BAIL_OUT> is called if the tests fail.
 C<level> is passed to C<check_dependencies> in L<Test::CheckDeps>.
 (Defaults to C<'classic'>.)
 
-=for Pod::Coverage
-register_prereqs
-=end
+=for Pod::Coverage register_prereqs
 
 =cut
 
