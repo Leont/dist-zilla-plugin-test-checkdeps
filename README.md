@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::CheckDeps - Check for presence of dependencies
 
 # VERSION
 
-version 0.008
+version 0.009
 
 # SYNOPSIS
 
@@ -16,10 +16,14 @@ version 0.008
 
 This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
 
-If `fatal` is true, `BAIL_OUT` is called if the tests fail.
+This plugin accepts the following options:
 
-`level` is passed to `check_dependencies` in [Test::CheckDeps](http://search.cpan.org/perldoc?Test::CheckDeps).
-(Defaults to `'classic'`.)
+- `fatal`: if true, `BAIL_OUT` is called if the tests fail. Defaults
+to false.
+- `level`: passed to `check_dependencies` in [Test::CheckDeps](http://search.cpan.org/perldoc?Test::CheckDeps).
+(Defaults to `classic`.)
+- `filename`: the name of the generated file. Defaults to
+`t/00-check-deps.t`.
 
 # AUTHOR
 
