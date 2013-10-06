@@ -1,7 +1,4 @@
-.build
-*.bak
-*.swp
-*.swo
-*.tdy
-*.tar.gz
-Dist-Zilla-Plugin-Test-CheckDeps-*
+/.build/
+!.gitignore
+/Dist-Zilla-Plugin-Test-CheckDeps-*
+/tmp/
