@@ -4,7 +4,6 @@ use warnings FATAL => 'all';
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Deep;
-use Test::Deep::JSON;
 use Test::DZil;
 use Path::Tiny;
 use Cwd;
@@ -22,9 +21,9 @@ my $tzil = Builder->from_config(
     {
         add_files => {
             'source/dist.ini' => simple_ini(
-                [ Prereqs => RuntimeRequires => { strict => 0 } ],
+                [ Prereqs => RuntimeRequires => { DoesNotExist => 0 } ],
                 [ MetaJSON => ],
-                [ 'Test::CheckDeps' => { level => 'suggests' } ],
+                [ 'Test::CheckDeps' => { level => 'suggests', todo_when => '$ENV{_TEST_CHECKDEPS_COND}' } ],
             ),
             path(qw(source lib Foo.pm)) => "package Foo; 1;",
         },
@@ -39,39 +38,43 @@ ok( -e $file, 'test created');
 my $content = $file->slurp;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
-like($content, qr/^use Test::CheckDeps [\d.]+;$/m, 'use line is correct');
-
-my $json = $tzil->slurp_file('build/META.json');
-cmp_deeply(
-    $json,
-    json(superhashof({
-        prereqs => superhashof({
-                test => {
-                    requires => {
-                        'Test::More' => '0.94',
-                        'Test::CheckDeps' => '0.008',
-                    },
-                },
-            }),
-        }),
-    ),
-    'test prereqs are properly injected',
+like(
+    $content,
+    qr/^BEGIN \{\n^\s*\(\$ENV\{_TEST_CHECKDEPS_COND\}\) && eval "use Test::CheckDeps [\d.]+; 1"\n^\s+or plan skip_all => 'Test::CheckDeps required for checking dependencies';\n^\}\n^use Test::CheckDeps [\d.]+;/ms,
+    'use line is correct',
 );
+
+# we can only run the test when todo_when evaluates to true, as we have a
+# missing prereq
 
 my $cwd = getcwd;
 my $prereqs_tested;
+my @test_details;
 subtest 'run the generated test' => sub
 {
+    local $ENV{_TEST_CHECKDEPS_COND} = 1;
     chdir $build_dir;
 
     do $file;
     warn $@ if $@;
 
+    @test_details = sort { $a->{name} cmp $b->{name} } Test::Builder->new->details;
     $prereqs_tested = Test::Builder->new->current_test;
 };
 
-# Test::More, Test::CheckDeps, strict
+# Test::More, Test::CheckDeps, DoesNotExist
 is($prereqs_tested, 3, 'correct number of prereqs were tested');
+
+cmp_deeply(
+    $test_details[0],
+    superhashof({
+        ok => 1,
+        actual_ok => 0,
+        name => re(qr/DoesNotExist/),
+        reason => 'these tests are not fatal when $ENV{_TEST_CHECKDEPS_COND}',
+    }),
+    'a TODO test failed',
+);
 
 chdir $cwd;
 

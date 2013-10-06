@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          - new "todo_when" option, for neutering tests under specific
+            (runtime) conditions
 
 0.009     2013-09-26 03:35:32 +0000
           - new 'filename' option, for changing the location of the created
