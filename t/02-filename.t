@@ -14,7 +14,7 @@ my $tzil = Builder->from_config(
                 [ GatherDir => ],
                 [ 'Test::CheckDeps' => { filename => 't/foo.t' } ],
             ),
-            path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
+            path(qw(source lib Foo.pm)) => "package Foo; 1;\n",
         },
     },
 );

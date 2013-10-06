@@ -26,12 +26,7 @@ my $tzil = Builder->from_config(
                 [ MetaJSON => ],
                 [ 'Test::CheckDeps' => { level => 'suggests' } ],
             ),
-            path(qw(source lib Foo.pm)) => <<'FOO',
-package Foo;
-# ABSTRACT: Foo
-1;
-__END__
-FOO
+            path(qw(source lib Foo.pm)) => "package Foo; 1;",
         },
     },
 );
