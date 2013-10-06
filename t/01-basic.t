@@ -3,6 +3,8 @@ use warnings FATAL => 'all';
 
 use Test::More;
 use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
+use Test::Deep;
+use Test::Deep::JSON;
 use Test::DZil;
 use Path::Tiny;
 use Cwd;
@@ -41,6 +43,25 @@ ok( -e $file, 'test created');
 
 my $content = $file->slurp;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+
+like($content, qr/^use Test::CheckDeps [\d.]+;$/m, 'use line is correct');
+
+my $json = $tzil->slurp_file('build/META.json');
+cmp_deeply(
+    $json,
+    json(superhashof({
+        prereqs => superhashof({
+                test => {
+                    requires => {
+                        'Test::More' => '0.94',
+                        'Test::CheckDeps' => '0.007',
+                    },
+                },
+            }),
+        }),
+    ),
+    'test prereqs are properly injected',
+);
 
 my $cwd = getcwd;
 my $prereqs_tested;
