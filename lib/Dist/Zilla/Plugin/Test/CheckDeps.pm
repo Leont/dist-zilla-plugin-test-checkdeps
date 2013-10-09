@@ -51,7 +51,7 @@ around add_file => sub {
 
 sub register_prereqs {
     my $self = shift;
-    $self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => '0.94', 'Test::CheckDeps' => '0.008');
+    $self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => '0.94', 'Test::CheckDeps' => '0.010');
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -107,7 +107,7 @@ use warnings;
 
 use Test::More 0.94;
 {{
-    my $use = 'use Test::CheckDeps 0.008;';
+    my $use = 'use Test::CheckDeps 0.010;';
 
     # todo_when = 0 is treated as a special default, backwards-compatible case
     $use = "BEGIN {\n    ($todo_when) && eval \"" . $use

@@ -49,7 +49,7 @@ cmp_deeply(
                 test => {
                     requires => {
                         'Test::More' => '0.94',
-                        'Test::CheckDeps' => '0.008',
+                        'Test::CheckDeps' => '0.010',
                     },
                 },
             }),
