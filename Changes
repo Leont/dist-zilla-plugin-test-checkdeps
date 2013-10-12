@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.010     2013-10-12 22:14:57 +0000
           - new "todo_when" option, for neutering tests under specific
             (runtime) conditions
 

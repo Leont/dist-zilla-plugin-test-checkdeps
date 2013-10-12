@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::CheckDeps - Check for presence of dependencies
 
 # VERSION
 
-version 0.009
+version 0.010
 
 # SYNOPSIS
 
@@ -17,6 +17,15 @@ version 0.009
 This module adds a test that assures all dependencies have been installed properly. If requested, it can bail out all testing on error.
 
 This plugin accepts the following options:
+
+- `todo_when`: a code string snippet (evaluated when the test is run)
+to indicate when failing tests should be considered [TODO](http://search.cpan.org/perldoc?Test::More#Conditional tests),
+rather than genuine fails -- default is '0' (tests are never `TODO`).
+
+    Other suggested values are:
+
+        todo_when = !$ENV{AUTHOR_TESTING} && !$ENV{AUTOMATED_TESTING}
+        todo_when = $^V < '5.012'   ; CPAN.pm didn't reliably read META.* before this
 
 - `fatal`: if true, `BAIL_OUT` is called if the tests fail. Defaults
 to false.
