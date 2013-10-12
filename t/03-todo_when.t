@@ -40,7 +40,7 @@ unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
 like(
     $content,
-    qr/^BEGIN \{\n^\s*\(\$ENV\{_TEST_CHECKDEPS_COND\}\) && eval "use Test::CheckDeps [\d.]+; 1"\n^\s+or plan skip_all => 'Test::CheckDeps required for checking dependencies';\n^\}\n^use Test::CheckDeps [\d.]+;/ms,
+    qr/^BEGIN \{\n^\s*\(\$ENV\{_TEST_CHECKDEPS_COND\}\) && eval "use Test::CheckDeps [\d.]+; 1"\n^\s+or plan skip_all => '[^']+';\n^\}\n^use Test::CheckDeps [\d.]+;/ms,
     'use line is correct',
 );
 
