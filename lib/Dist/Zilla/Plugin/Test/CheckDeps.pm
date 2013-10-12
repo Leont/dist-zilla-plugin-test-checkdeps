@@ -111,7 +111,7 @@ use Test::More 0.94;
 
     # todo_when = 0 is treated as a special default, backwards-compatible case
     $use = "BEGIN {\n    ($todo_when) && eval \"" . $use
-        . " 1\"\n        or plan skip_all => 'Test::CheckDeps required for checking dependencies';\n}\n"
+        . " 1\"\n        or plan skip_all => '!!! Test::CheckDeps required for checking dependencies -- failure to satisfy specified prerequisites!';\n}\n"
         . $use
             if $todo_when ne '0';
     $use
