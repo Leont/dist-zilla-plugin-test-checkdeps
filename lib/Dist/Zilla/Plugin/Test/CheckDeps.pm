@@ -80,7 +80,7 @@ fails -- default is '0' (tests are never TODO).
 
 Other suggested values are:
 
-    todo_when = !$ENV{AUTHOR_TESTING}
+    todo_when = !$ENV{AUTHOR_TESTING} && !$ENV{AUTOMATED_TESTING}
     todo_when = $^V < '5.012'   ; CPAN.pm didn't reliably read META.* before this
 
 =item * C<fatal>: if true, C<BAIL_OUT> is called if the tests fail. Defaults
