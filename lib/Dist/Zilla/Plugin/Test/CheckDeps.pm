@@ -120,13 +120,9 @@ use Test::More 0.94;
 {{
     $todo_when eq '0'
         ? ''
-        : "TODO: {\n"
-            . "local \$TODO = 'these tests are not fatal when $todo_when' if (${todo_when});\n";
+        : "local \$TODO = 'these tests are not fatal when $todo_when' if (${todo_when});\n";
 }}
 check_dependencies('{{ $level }}');
-{{
-    $todo_when ne '0' ? "}\n" : '';
-}}
 
 if ({{ $fatal }}) {
     BAIL_OUT("Missing dependencies") if !Test::More->builder->is_passing;
