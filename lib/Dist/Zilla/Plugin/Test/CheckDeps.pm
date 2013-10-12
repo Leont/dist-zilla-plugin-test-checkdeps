@@ -74,9 +74,11 @@ This plugin accepts the following options:
 
 =over 4
 
+=for stopwords TODO
+
 =item * C<todo_when>: a code string snippet (evaluated when the test is run)
-to indicate when failing tests should be considered TODO, rather than genuine
-fails -- default is '0' (tests are never TODO).
+to indicate when failing tests should be considered L<TODO|Test::More/Conditional tests>,
+rather than genuine fails -- default is '0' (tests are never C<TODO>).
 
 Other suggested values are:
 
