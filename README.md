@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::CheckDeps - Check for presence of dependencies
 
 # VERSION
 
-version 0.010
+version 0.011
 
 # SYNOPSIS
 
@@ -19,7 +19,7 @@ This module adds a test that assures all dependencies have been installed proper
 This plugin accepts the following options:
 
 - `todo_when`: a code string snippet (evaluated when the test is run)
-to indicate when failing tests should be considered [TODO](http://search.cpan.org/perldoc?Test::More#Conditional tests),
+to indicate when failing tests should be considered [TODO](https://metacpan.org/pod/Test::More#Conditional-tests),
 rather than genuine fails -- default is '0' (tests are never `TODO`).
 
     Other suggested values are:
@@ -29,7 +29,7 @@ rather than genuine fails -- default is '0' (tests are never `TODO`).
 
 - `fatal`: if true, `BAIL_OUT` is called if the tests fail. Defaults
 to false.
-- `level`: passed to `check_dependencies` in [Test::CheckDeps](http://search.cpan.org/perldoc?Test::CheckDeps).
+- `level`: passed to `check_dependencies` in [Test::CheckDeps](https://metacpan.org/pod/Test::CheckDeps).
 (Defaults to `classic`.)
 - `filename`: the name of the generated file. Defaults to
 `t/00-check-deps.t`.

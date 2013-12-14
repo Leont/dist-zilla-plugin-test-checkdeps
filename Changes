@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.011     2013-12-14 19:19:33 +0000
           - update configure_requires checking in Makefile.PL, add CONTRIBUTING file
 
 0.010     2013-10-12 22:14:57 +0000
