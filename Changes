@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+
+0.012     2013-12-20 01:21:28 +0000
           - bump dependency on Test::CheckDeps to keep pace with the version
             used by the generated test (thanks SineSwiper!)
           - bump dependency on Dist::Zilla to ensure that META.* files are

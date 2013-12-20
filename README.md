@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::CheckDeps - Check for presence of dependencies
 
 # VERSION
 
-version 0.011
+version 0.012
 
 # SYNOPSIS
 
@@ -47,5 +47,6 @@ the same terms as the Perl 5 programming language system itself.
 
 # CONTRIBUTORS
 
+- Brendan Byrd <GitHub@ResonatorSoft.org>
 - Karen Etheridge <ether@cpan.org>
 - Leon Timmermans <fawaka@gmail.com>
