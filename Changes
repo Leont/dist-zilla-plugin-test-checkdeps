@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          - bump dependency on Test::CheckDeps to keep pace with the version
+            used by the generated test (thanks SineSwiper!)
 
 0.011     2013-12-14 19:19:33 +0000
           - update configure_requires checking in Makefile.PL, add CONTRIBUTING file
