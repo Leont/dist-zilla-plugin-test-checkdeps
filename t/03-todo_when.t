@@ -20,7 +20,7 @@ my $tzil = Builder->from_config(
     { dist_root => 't/does-not-exist' },
     {
         add_files => {
-            'source/dist.ini' => simple_ini(
+            path(qw(source dist.ini)) => simple_ini(
                 [ Prereqs => RuntimeRequires => { DoesNotExist => 0 } ],
                 [ MetaJSON => ],
                 [ 'Test::CheckDeps' => { level => 'suggests', todo_when => '$ENV{_TEST_CHECKDEPS_COND}' } ],
