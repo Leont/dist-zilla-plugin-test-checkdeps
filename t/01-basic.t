@@ -6,7 +6,7 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Deep;
 use Test::DZil;
 use Path::Tiny;
-use Cwd;
+use File::pushd 'pushd';
 
 BEGIN {
     use Dist::Zilla::Plugin::Test::CheckDeps;
@@ -57,11 +57,10 @@ cmp_deeply(
     'test prereqs are properly injected',
 );
 
-my $cwd = getcwd;
 my $prereqs_tested;
 subtest 'run the generated test' => sub
 {
-    chdir $build_dir;
+    my $wd = pushd $build_dir;
 
     do $file;
     warn $@ if $@;
@@ -71,8 +70,6 @@ subtest 'run the generated test' => sub
 
 # Test::More, Test::CheckDeps, strict
 is($prereqs_tested, 3, 'correct number of prereqs were tested');
-
-chdir $cwd;
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;

@@ -6,7 +6,7 @@ use if $ENV{AUTHOR_TESTING}, 'Test::Warnings';
 use Test::Deep;
 use Test::DZil;
 use Path::Tiny;
-use Cwd;
+use File::pushd 'pushd';
 
 BEGIN {
     use Dist::Zilla::Plugin::Test::CheckDeps;
@@ -49,13 +49,12 @@ like(
 # we can only run the test when todo_when evaluates to true, as we have a
 # missing prereq
 
-my $cwd = getcwd;
 my $prereqs_tested;
 my @test_details;
 subtest 'run the generated test' => sub
 {
     local $ENV{_TEST_CHECKDEPS_COND} = 1;
-    chdir $build_dir;
+    my $wd = pushd $build_dir;
 
     do $file;
     warn $@ if $@;
@@ -77,8 +76,6 @@ cmp_deeply(
     }),
     'a TODO test failed',
 );
-
-chdir $cwd;
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;
