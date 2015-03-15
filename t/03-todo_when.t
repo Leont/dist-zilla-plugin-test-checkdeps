@@ -37,7 +37,7 @@ my $build_dir = $tzil->tempdir->subdir('build');
 my $file = path($build_dir, 't', '00-check-deps.t');
 ok( -e $file, 'test created');
 
-my $content = $file->slurp;
+my $content = $file->slurp_utf8;
 unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
 
 like(
