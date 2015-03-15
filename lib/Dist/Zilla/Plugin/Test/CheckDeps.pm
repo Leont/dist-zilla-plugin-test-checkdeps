@@ -72,9 +72,9 @@ This module adds a test that assures all dependencies have been installed proper
 
 This plugin accepts the following options:
 
-=over 4
-
 =for stopwords TODO
+
+=over 4
 
 =item * C<todo_when>: a code string snippet (evaluated when the test is run)
 to indicate when failing tests should be considered L<TODO|Test::More/Conditional tests>,
