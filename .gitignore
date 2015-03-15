@@ -1,4 +1,6 @@
+/.ackrc
 /.build/
-!.gitignore
-/Dist-Zilla-Plugin-Test-CheckDeps-*
-/tmp/
+!/.gitignore
+/.latest
+/Dist-Zilla-Plugin-Test-CheckDeps-*/
+/Dist-Zilla-Plugin-Test-CheckDeps-*.tar.gz
