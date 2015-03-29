@@ -1,6 +1,8 @@
 package Dist::Zilla::Plugin::Test::CheckDeps;
 # vim: set ts=4 sw=4 tw=78 et nolist :
 
+our $VERSION = '0.013';
+
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
 with qw/Dist::Zilla::Role::TextTemplate Dist::Zilla::Role::PrereqSource/;
@@ -105,7 +107,7 @@ ___[ test-checkdeps ]___
 use strict;
 use warnings;
 
-# this test was generated with {{ ref($plugin) . ' ' . ($plugin->VERSION || '<self>') }}
+# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
 
 use Test::More 0.94;
 {{

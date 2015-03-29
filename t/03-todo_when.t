@@ -8,13 +8,6 @@ use Test::DZil;
 use Path::Tiny;
 use File::pushd 'pushd';
 
-BEGIN {
-    use Dist::Zilla::Plugin::Test::CheckDeps;
-    $Dist::Zilla::Plugin::Test::CheckDeps::VERSION = 9999
-        unless $Dist::Zilla::Plugin::Test::CheckDeps::VERSION;
-}
-
-
 # build fake dist
 my $tzil = Builder->from_config(
     { dist_root => 't/does-not-exist' },
