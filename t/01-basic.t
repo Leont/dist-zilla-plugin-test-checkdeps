@@ -15,6 +15,7 @@ my $tzil = Builder->from_config(
         add_files => {
             path(qw(source dist.ini)) => simple_ini(
                 [ Prereqs => RuntimeRequires => { strict => 0 } ],
+                [ MetaConfig => ],
                 [ MetaJSON => ],
                 [ 'Test::CheckDeps' => { level => 'suggests' } ],
             ),
@@ -45,6 +46,21 @@ cmp_deeply(
                     'Test::CheckDeps' => '0.010',
                 },
             },
+        }),
+        x_Dist_Zilla => superhashof({
+            plugins => supersetof({
+                class   => 'Dist::Zilla::Plugin::Test::CheckDeps',
+                config => {
+                    'Dist::Zilla::Plugin::Test::CheckDeps' => {
+                        todo_when => '0',
+                        level => 'suggests',
+                        filename => 't/00-check-deps.t',
+                        fatal => 0,
+                    },
+                },
+                name    => 'Test::CheckDeps',
+                version => Dist::Zilla::Plugin::Test::CheckDeps->VERSION,
+            }),
         }),
     }),
     'test prereqs are properly injected',
