@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::Test::CheckDeps;
-# vim: set ts=4 sw=4 tw=78 et nolist :
+# vim: set ts=8 sts=4 sw=4 tw=115 et :
 
 our $VERSION = '0.013';
 
