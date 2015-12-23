@@ -126,7 +126,7 @@ ___[ test-checkdeps ]___
 use strict;
 use warnings;
 
-# this test was generated with {{ ref($plugin) . ' ' . $plugin->VERSION }}
+# this test was generated with {{ ref $plugin }} {{ $plugin->VERSION }}
 
 use Test::More 0.94;
 {{
