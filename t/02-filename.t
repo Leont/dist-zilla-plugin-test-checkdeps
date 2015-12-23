@@ -22,9 +22,9 @@ my $tzil = Builder->from_config(
 $tzil->chrome->logger->set_debug(1);
 $tzil->build;
 
-my $build_dir = $tzil->tempdir->subdir('build');
-ok(!-e path($build_dir, 't', '00-check-deps.t'), 'default test not created');
-ok(-e path($build_dir, 't', 'foo.t'), 'test created using new name');
+my $build_dir = path($tzil->tempdir)->child('build');
+ok(!-e $build_dir->child('t', '00-check-deps.t'), 'default test not created');
+ok(-e $build_dir->child('t', 'foo.t'), 'test created using new name');
 
 diag 'got log messages: ', explain $tzil->log_messages
     if not Test::Builder->new->is_passing;

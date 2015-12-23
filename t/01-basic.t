@@ -27,8 +27,8 @@ my $tzil = Builder->from_config(
 $tzil->chrome->logger->set_debug(1);
 $tzil->build;
 
-my $build_dir = $tzil->tempdir->subdir('build');
-my $file = path($build_dir, 't', '00-check-deps.t');
+my $build_dir = path($tzil->tempdir)->child('build');
+my $file = $build_dir->child('t', '00-check-deps.t');
 ok( -e $file, 'test created');
 
 my $content = $file->slurp_utf8;
