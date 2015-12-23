@@ -32,7 +32,7 @@ my $file = path($build_dir, 't', '00-check-deps.t');
 ok( -e $file, 'test created');
 
 my $content = $file->slurp_utf8;
-unlike($content, qr/[^\S\n]\n/m, 'no trailing whitespace in generated test');
+unlike($content, qr/[^\S\n]\n/, 'no trailing whitespace in generated test');
 
 like($content, qr/^use Test::CheckDeps [\d.]+;$/m, 'use line is correct');
 
