@@ -68,7 +68,11 @@ around add_file => sub {
 
 sub register_prereqs {
     my $self = shift;
-    $self->zilla->register_prereqs({ phase => 'test' }, 'Test::More' => '0.94', 'Test::CheckDeps' => '0.010');
+    $self->zilla->register_prereqs(
+        { phase => 'test', type => 'requires' },
+        'Test::More' => '0.94',
+        'Test::CheckDeps' => '0.010',
+    );
 }
 
 __PACKAGE__->meta->make_immutable;
