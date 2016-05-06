@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
 {{$NEXT}}
+          - fix tests for changes in Dist::Zilla 6
 
 0.013     2015-08-16 00:12:39 +0000
           - configuration is dumped to metadata
