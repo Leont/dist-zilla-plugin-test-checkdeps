@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::Test::CheckDeps - Check for presence of dependencies
 
 =head1 VERSION
 
-version 0.013
+version 0.014
 
 =head1 SYNOPSIS
 
@@ -48,6 +48,17 @@ F<t/00-check-deps.t>.
 
 =for Pod::Coverage register_prereqs
 
+=head1 SUPPORT
+
+Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-CheckDeps>
+(or L<bug-Dist-Zilla-Plugin-Test-CheckDeps@rt.cpan.org|mailto:bug-Dist-Zilla-Plugin-Test-CheckDeps@rt.cpan.org>).
+
+There is also a mailing list available for users of this distribution, at
+L<http://dzil.org/#mailing-list>.
+
+There is also an irc channel available for users of this distribution, at
+L<C<#distzilla> on C<irc.perl.org>|irc://irc.perl.org/#distzilla>.
+
 =head1 AUTHOR
 
 Leon Timmermans <leont@cpan.org>
@@ -72,7 +83,7 @@ Brendan Byrd <GitHub@ResonatorSoft.org>
 
 =back
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENCE
 
 This software is copyright (c) 2011 by Leon Timmermans.
 

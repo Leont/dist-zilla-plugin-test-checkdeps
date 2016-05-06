@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-Test-CheckDeps
 
-{{$NEXT}}
+0.014     2016-05-06 05:38:12 +0000
           - fix tests for changes in Dist::Zilla 6
 
 0.013     2015-08-16 00:12:39 +0000
