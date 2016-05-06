@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::Test::CheckDeps;
 # vim: set ts=8 sts=4 sw=4 tw=115 et :
 
-our $VERSION = '0.014';
+our $VERSION = '0.015';
 
 use Moose;
 extends qw/Dist::Zilla::Plugin::InlineFiles/;
